@@ -1,0 +1,7 @@
+torch
+torchaudio
+transformers
+whisper
+pyannote.audio
+speechbrain
+scipy
