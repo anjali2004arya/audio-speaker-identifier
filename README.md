@@ -4,7 +4,7 @@ This project is an audio processing pipeline that performs:
 
 - ✅ Automatic speech transcription
 - Speaker diarization using [pyannote-audio](https://github.com/pyannote/pyannote-audio)
-- Speaker identification by comparing segments to known speaker embeddings ([speaker-id/README.md at master - GitHub](https://github.com/google/speaker-id/blob/master/README.md?utm_source=chatgpt.com), [Speaker identification on audio files using the pyannote ... - GitHub](https://github.com/z3lx/speaker-identification?utm_source=chatgpt.com), [Speaker Identification using Neural Net. - GitHub](https://github.com/SkyDocs/speaker-identification?utm_source=chatgpt.com))
+- Speaker identification by comparing segments to known speaker embeddings 
 
 ---
 
@@ -14,7 +14,7 @@ This project is an audio processing pipeline that performs:
 - Splits audio into segments per speaker
 - Matches speakers to a known database using audio embeddings
 - Automatically handles temporary audio segmentation
-- Includes error handling and secure token management via `.env` ([adobe-research/speaker-identification - GitHub](https://github.com/adobe-research/speaker-identification?utm_source=chatgpt.com), [speaker-id/lingvo/README.md at master - GitHub](https://github.com/google/speaker-id/blob/master/lingvo/README.md?utm_source=chatgpt.com))
+- Includes error handling and secure token management via `.env` 
 
 ---
 
@@ -77,7 +77,7 @@ HUGGINGFACE_TOKEN=your_huggingface_token_here
 
 ## 🚀 Usage
 
-To process an audio file and identify speakers: ([hhoanguet/speaker-identification - GitHub](https://github.com/hhoanguet/speaker-identification?utm_source=chatgpt.com))
+To process an audio file and identify speakers
 
 ```bash
 python main.py
@@ -89,7 +89,7 @@ The script will:
 1. Perform speaker diarization on `test_audio.wav`.
 2. Transcribe each speaker segment.
 3. Compare segments to known speakers in the `known_speakers/` directory.
-4. Output the transcription with identified speakers. ([modelscope/3D-Speaker: A Repository for Single - GitHub](https://github.com/modelscope/3D-Speaker?utm_source=chatgpt.com), [Speaker Identification using Neural Net. - GitHub](https://github.com/SkyDocs/speaker-identification?utm_source=chatgpt.com))
+4. Output the transcription with identified speakers.
 
 ---
 
