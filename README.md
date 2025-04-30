@@ -1,54 +1,59 @@
-# 🎙️ Speaker Identification & Transcription System
+# 🎙️ Audio Speaker Identifier
 
-This project is an **audio processing pipeline** that performs:
+This project is an audio processing pipeline that performs:
 
-- ✅ **Automatic speech transcription**
-- 🧠 **Speaker diarization** using [pyannote-audio](https://huggingface.co/pyannote/speaker-diarization-3.1)
-- 🧍 **Speaker identification** by comparing segments to known speaker embeddings
+- ✅ Automatic speech transcription
+- Speaker diarization using [pyannote-audio](https://github.com/pyannote/pyannote-audio)
+- Speaker identification by comparing segments to known speaker embeddings ([speaker-id/README.md at master - GitHub](https://github.com/google/speaker-id/blob/master/README.md?utm_source=chatgpt.com), [Speaker identification on audio files using the pyannote ... - GitHub](https://github.com/z3lx/speaker-identification?utm_source=chatgpt.com), [Speaker Identification using Neural Net. - GitHub](https://github.com/SkyDocs/speaker-identification?utm_source=chatgpt.com))
 
 ---
 
-## 🚀 Features
+## 🔧 Features
 
-- Transcribes any audio file (`.wav`) into text
+- Transcribes any `.wav` audio file into text
 - Splits audio into segments per speaker
 - Matches speakers to a known database using audio embeddings
 - Automatically handles temporary audio segmentation
-- Includes error handling and secure token management via `.env`
+- Includes error handling and secure token management via `.env` ([adobe-research/speaker-identification - GitHub](https://github.com/adobe-research/speaker-identification?utm_source=chatgpt.com), [speaker-id/lingvo/README.md at master - GitHub](https://github.com/google/speaker-id/blob/master/lingvo/README.md?utm_source=chatgpt.com))
 
 ---
 
-## 🗂️ Project Structure
+## 📁 Project Structure
 
 ```
-📁 project-root/
+
+audio-speaker-identifier/
 ├── main.py                  # Main entry point
 ├── diarizer.py              # Handles speaker diarization
-├── transcriber.py           # Transcribes audio (requires Whisper or other tool)
-├── speaker_identifier.py    # Compares speakers to known database
-├── known_speakers/          # Directory with known speaker audio clips
-├── test_audio.wav           # Input audio file to analyze
-├── .env                     # Contains HF_AUTH_TOKEN
-└── requirements.txt         # Python dependencies
+├── transcriber.py           # Performs speech-to-text transcription
+├── speaker_identifier.py    # Matches speakers using embeddings
+├── known_speakers/          # Directory containing known speaker audio samples
+├── test_audio.wav           # Sample audio file for testing
+├── requirements.txt         # Python dependencies
+├── .gitignore
+└── README.md
 ```
+
 
 ---
 
-## 🔧 Installation
+## 🧪 Setup Instructions
 
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/speaker-identification.git
-cd speaker-identification
+git clone https://github.com/anjali2004arya/audio-speaker-identifier.git
+cd audio-speaker-identifier
 ```
 
-### 2. Create and Activate a Virtual Environment
+
+### 2. Create and Activate Conda Environment
 
 ```bash
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
+conda create -n speaker-id python=3.8
+conda activate speaker-id
 ```
+
 
 ### 3. Install Dependencies
 
@@ -56,66 +61,46 @@ source venv/bin/activate  # On Windows: venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
----
 
-## 🔑 Hugging Face Token Setup
+### 4. Configure Environment Variables
 
-### 1. Get a token from: https://huggingface.co/settings/tokens
+Create a `.env` file in the root directory and add your Hugging Face API token:
 
-### 2. Accept access to the model:
-- Visit: https://huggingface.co/pyannote/speaker-diarization-3.1
-- Click **"Access repository"** or **agree to terms**
-
-### 3. Create a `.env` file in the project root:
-
+```bash
+HUGGINGFACE_TOKEN=your_huggingface_token_here
 ```
-HF_AUTH_TOKEN=hf_your_actual_token_here
-```
+
+
+*Note: Ensure you have access to the necessary models on Hugging Face.*
 
 ---
 
-## ▶️ Usage
+## 🚀 Usage
+
+To process an audio file and identify speakers: ([hhoanguet/speaker-identification - GitHub](https://github.com/hhoanguet/speaker-identification?utm_source=chatgpt.com))
 
 ```bash
 python main.py
 ```
 
-Output:
-- Transcribed text
-- List of speaker-labeled segments with start and end times
+
+The script will:
+
+1. Perform speaker diarization on `test_audio.wav`.
+2. Transcribe each speaker segment.
+3. Compare segments to known speakers in the `known_speakers/` directory.
+4. Output the transcription with identified speakers. ([modelscope/3D-Speaker: A Repository for Single - GitHub](https://github.com/modelscope/3D-Speaker?utm_source=chatgpt.com), [Speaker Identification using Neural Net. - GitHub](https://github.com/SkyDocs/speaker-identification?utm_source=chatgpt.com))
 
 ---
 
-## 📁 Known Speakers
+## 🗣️ Adding Known Speakers
 
-Add `.wav` files for each known speaker in the `known_speakers/` folder.  
-File names should be descriptive (e.g., `alice.wav`, `bob.wav`).  
-The system will extract embeddings and use them for matching.
+To add a new known speaker:
 
----
+1. Place a `.wav` file of the speaker's voice in the `known_speakers/` directory.
+2. Name the file appropriately (e.g., `alice.wav`).
 
-## 📦 Requirements
-
-- Python 3.8+
-- `torch`, `torchaudio`
-- `pyannote.audio`
-- `openai-whisper` or other ASR for `transcriber.py`
-- `python-dotenv`
+The system will use these samples to match speakers in the input audio.
 
 ---
-
-## 📌 Notes
-
-- This project is designed to work with mono WAV files. Use tools like `ffmpeg` to convert if needed.
-- Transcription and diarization are computationally intensive and may require a GPU for large files.
-- Temporary audio segments are automatically deleted after processing.
-
-
----
-
-## ✨ Acknowledgements
-
-- [Hugging Face](https://huggingface.co/)
-- [pyannote-audio](https://github.com/pyannote/pyannote-audio)
-- [Whisper by OpenAI](https://github.com/openai/whisper)
-
+ 
